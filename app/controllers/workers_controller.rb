@@ -28,4 +28,15 @@ class WorkersController < ApplicationController
       end
     end
   end
+
+  def update_complete
+    @worker = Worker.find(params[:worker_id])
+    @job = Job.find(params[:job_id])
+    if @job.update(completed: true)
+      respond_to do |format|
+        format.html { redirect_to worker_path(current_worker) }
+        format.js
+      end
+    end
+  end
 end

@@ -3,7 +3,9 @@
 <div id="claimed_jobs">
   <ol>
     <% current_worker.jobs.each do |job| %>
-      <li id='job_<%=  job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(active)", worker_active_path(@worker, job), remote: true %> </li>
+      <% if !job.active? && !job.completed? %>
+        <li id='job_<%=  job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(active)", worker_active_path(@worker, job), remote: true %> </li>
+      <% end %>
     <% end %>
   </ol>
 </div>
@@ -11,7 +13,16 @@
 <h2>Active Jobs</h2>
 <ol id="active_jobs">
   <% current_worker.jobs.each do |job| %>
-    <% if !job.active? %>
+    <% if job.active? && !job.completed? %>
+      <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(complete)", worker_complete_path(@worker, job), remote: true %></li>
+    <% end %>
+  <% end %>
+</ol>
+
+<h2>Completed Jobs</h2>
+<ol id="completed_jobs">
+  <% current_worker.jobs.each do |job| %>
+    <% if job.completed? %>
       <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %></li>
     <% end %>
   <% end %>

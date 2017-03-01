@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :jobs
   resources :workers do
     get 'active/:job_id', to: 'workers#update_active', as: 'active'
+    get 'complete/:job_id', to: 'workers#update_complete', as: 'complete'
   end
 end
