@@ -1,7 +1,7 @@
 <h1><%= current_worker.email %>'s claimed jobs:</h1>
 
 <ul>
-<% current_worker.jobs.each do |job| %>
-<li><%= link_to job.title, job_path(job) %></li>
-<% end %>
+  <% current_worker.jobs.each do |job| %>
+    <li><%= link_to job.title, job_path(job) %></li>
+  <% end %>
 </ul>
