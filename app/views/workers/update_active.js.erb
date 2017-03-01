@@ -1,2 +1,2 @@
-$('#claimed_jobs').remove();
-$('#active_jobs').append('<%= link_to @job.title, job_path(@job) %> | <%= link_to "Done", worker_complete_path(@worker, @job), remote: true, class: "btn btn-default" %>')
+$('#job_<%= @job.id %>').remove();
+$('#active_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %> | <%= link_to "Done", worker_complete_path(@worker, @job), remote: true, class: "btn btn-default" %></li>')

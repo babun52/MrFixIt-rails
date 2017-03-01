@@ -1,2 +1,2 @@
-$('#active_jobs').remove();
-$('#completed_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %></li>')
+$('#job_<%= @job.id %>').remove();
+$('#completed_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %> | <%= link_to "remove", @job, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></li>')

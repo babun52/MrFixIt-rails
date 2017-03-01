@@ -4,17 +4,19 @@
       <table class="table">
         <thead class="thead-inverse">
           <tr>
-            <th>Claimed jobs</th>
+            <th>Claimed Jobs</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td id="claimed_jobs">
-              <% current_worker.jobs.each do |job| %>
-                <% if !job.active? && !job.completed? %>
-                  <%= link_to job.title, job_path(job) %> | <%= link_to "Active", worker_active_path(@worker, job), remote: true, class: "btn btn-default" %>
+            <td>
+              <ol id="claimed_jobs">
+                <% current_worker.jobs.each do |job| %>
+                  <% if !job.active? && !job.completed? %>
+                    <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "Active", worker_active_path(@worker, job), remote: true, class: "btn btn-default" %></li>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </ol>
             </td>
           </tr>
         </tbody>
@@ -29,12 +31,14 @@
         </thead>
         <tbody>
           <tr>
-            <td id="active_jobs">
-              <% current_worker.jobs.each do |job| %>
-                <% if job.active? && !job.completed? %>
-                  <%= link_to job.title, job_path(job) %> | <%= link_to "Done", worker_complete_path(@worker, job), remote: true, class: "btn btn-default" %>
+            <td>
+              <ol id="active_jobs">
+                <% current_worker.jobs.each do |job| %>
+                  <% if job.active? && !job.completed? %>
+                    <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "Done", worker_complete_path(@worker, job), remote: true, class: "btn btn-default" %></li>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </ol>
             </td>
           </tr>
         </tbody>
@@ -53,7 +57,7 @@
               <ol id="completed_jobs">
                 <% current_worker.jobs.each do |job| %>
                   <% if job.completed? %>
-                    <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %></li>
+                    <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "remove", job, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></li>
                   <% end %>
                 <% end %>
               </ol>

@@ -75,5 +75,7 @@ th {
 }
 
 #completed_jobs {
-  text-decoration: line-through;
+  li {
+    text-decoration: line-through;
+  }
 }
