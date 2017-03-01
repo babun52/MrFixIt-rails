@@ -1,6 +1,6 @@
 class WorkersController < ApplicationController
   def show
-    @worker = current_worker
+    @worker = Worker.find(params[:id])
     render :show
   end
 
@@ -18,4 +18,14 @@ class WorkersController < ApplicationController
     end
   end
 
+  def update_active
+    @worker = Worker.find(params[:worker_id])
+    @job = Job.find(params[:job_id])
+    if @job.update(active: true)
+      respond_to do |format|
+        format.html { redirect_to worker_path(current_worker) }
+        format.js
+      end
+    end
+  end
 end

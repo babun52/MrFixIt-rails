@@ -1,0 +1,2 @@
+$('#job_<%= @job.id %>').remove();
+$('#active_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %>')

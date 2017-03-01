@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :jobs
-  resources :workers
+  resources :workers do
+    get 'active/:job_id', to: 'workers#update_active', as: 'active'
+  end
 end

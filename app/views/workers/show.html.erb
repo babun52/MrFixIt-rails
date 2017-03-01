@@ -1,9 +1,18 @@
 <h1><%= current_worker.email %>'s claimed jobs:</h1>
 
-<ul>
-  <% current_worker.jobs.each do |job| %>
-    <li><%= link_to job.title, job_path(job) %></li>
-  <% end %>
-</ul>
+<div id="claimed_jobs">
+  <ol>
+    <% current_worker.jobs.each do |job| %>
+      <li id='job_<%=  job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(active)", worker_active_path(@worker, job), remote: true %> </li>
+    <% end %>
+  </ol>
+</div>
 
 <h2>Active Jobs</h2>
+<ol id="active_jobs">
+  <% current_worker.jobs.each do |job| %>
+    <% if !job.active? %>
+      <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %></li>
+    <% end %>
+  <% end %>
+</ol>
