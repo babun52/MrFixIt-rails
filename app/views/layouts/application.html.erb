@@ -14,7 +14,7 @@
     <div class="navigation-menu">
       <ul>
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "See All Jobs" %></li>
+        <li><%= link_to "See All Jobs", jobs_path%></li>
         <li><%= link_to "Add Your Job", new_job_path %></li>
         <% if worker_signed_in? %>
           <p class="login-notice"><em>You're signed into your <%= current_worker.email %> <b>worker account</b></em></p>
