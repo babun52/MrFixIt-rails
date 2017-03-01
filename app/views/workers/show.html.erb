@@ -1,10 +1,11 @@
-<h1><%= current_worker.email %>'s claimed jobs:</h1>
+<h1><%= current_worker.email %>'s</h1>
 
+<h2>Claimed jobs</h2>
 <div id="claimed_jobs">
   <ol>
     <% current_worker.jobs.each do |job| %>
       <% if !job.active? && !job.completed? %>
-        <li id='job_<%=  job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(active)", worker_active_path(@worker, job), remote: true %> </li>
+        <li id='job_<%=  job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "Active", worker_active_path(@worker, job), remote: true, class: "btn btn-default" %></li>
       <% end %>
     <% end %>
   </ol>
@@ -14,7 +15,7 @@
 <ol id="active_jobs">
   <% current_worker.jobs.each do |job| %>
     <% if job.active? && !job.completed? %>
-      <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "(complete)", worker_complete_path(@worker, job), remote: true %></li>
+      <li id='job_<%= job.id %>'><%= link_to job.title, job_path(job) %> | <%= link_to "Done", worker_complete_path(@worker, job), remote: true, class: "btn btn-default" %></li>
     <% end %>
   <% end %>
 </ol>
