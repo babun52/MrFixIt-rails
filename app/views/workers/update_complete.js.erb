@@ -1,2 +1,2 @@
-$('#job_<%= @job.id %>').remove();
-$('#completed_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %>')
+$('#active_jobs').remove();
+$('#completed_jobs').append('<li id="job_<%= @job.id %>"><%= link_to @job.title, job_path(@job) %></li>')
