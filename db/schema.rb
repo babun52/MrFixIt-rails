@@ -16,12 +16,16 @@ ActiveRecord::Schema.define(version: 20170301034358) do
   enable_extension "plpgsql"
 
   create_table "jobs", force: :cascade do |t|
-    t.string  "title"
-    t.string  "description"
-    t.boolean "completed",   default: false
-    t.boolean "pending",     default: false
-    t.integer "worker_id"
-    t.boolean "active",      default: false
+    t.string   "title"
+    t.string   "description"
+    t.boolean  "completed",   default: false
+    t.boolean  "pending",     default: false
+    t.integer  "worker_id"
+    t.boolean  "in_progress", default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "active",      default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170301034358) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -54,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170301034358) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_workers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_workers_on_reset_password_token", unique: true, using: :btree
   end
