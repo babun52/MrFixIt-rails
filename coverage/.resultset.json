@@ -651,10 +651,10 @@
         1,
         1,
         1,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -687,7 +687,7 @@
       "/Users/Guest/Desktop/MrFixIt-rails/app/controllers/landing_controller.rb": [
         1,
         1,
-        1,
+        2,
         null,
         null
       ],
@@ -700,7 +700,7 @@
         1,
         null,
         1,
-        1,
+        2,
         null,
         null,
         1,
@@ -709,7 +709,7 @@
         null,
         null,
         1,
-        0,
+        2,
         null,
         null,
         1,
@@ -722,8 +722,8 @@
         null,
         null,
         1,
-        0,
-        0,
+        1,
+        1,
         0,
         0,
         0,
@@ -736,8 +736,8 @@
         null,
         null,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
         null,
         null,
@@ -756,6 +756,6 @@
         null
       ]
     },
-    "timestamp": 1488666125
+    "timestamp": 1488818909
   }
 }
